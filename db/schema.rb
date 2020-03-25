@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_003829) do
+ActiveRecord::Schema.define(version: 2020_03_25_020157) do
 
   create_table "groups", force: :cascade do |t|
     t.integer "user_id"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 2020_03_25_003829) do
 
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "author_id"
     t.string "name", default: "", null: false
     t.integer "amount"
     t.datetime "created_at", null: false
