@@ -1,0 +1,7 @@
+<%= form_with model: Group.new do |f| %>
+  <%= f.label :name %>
+  
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.submit 'Submit', class: "btn btn-primary" %>
+<% end %>
