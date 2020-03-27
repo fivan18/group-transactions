@@ -1,0 +1,11 @@
+<%= form_with model: Transaction.new do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :amount %>
+  <%= f.number_field :amount, class: 'form-control' %>
+
+  <%= select("group", "group_id", Group.all.collect { |g| [ g.name, g.id ] }, { include_blank: true }) %>
+
+  <%= f.submit 'Submit', class: "btn btn-primary" %>
+<% end %>
