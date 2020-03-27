@@ -1,0 +1,7 @@
+<ul>
+  <% @transactions.each do |transaction| %>
+    <% transaction.groups.each do |group| %>
+      <li>Transaction: <%= transaction.name %> Group: <%= group.name %></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -3,4 +3,8 @@ class User < ApplicationRecord
 
   has_many :transactions
   has_many :groups
+
+  def group_transactions
+    transactions.select { |transaction| !transaction.groups.empty? }
+  end
 end
