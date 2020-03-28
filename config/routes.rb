@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'sessions#new'
   resources :sessions, only: [:new, :create]
   resources :users, only: [:show, :new, :create]
