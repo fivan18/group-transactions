@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'sessions#new'
-  resources :sessions, only: [:new, :create]
-  resources :users, only: [:show, :new, :create]
+  root 'transactions#group_transactions'
+  resources :users, only: [:show]
   resources :transactions, only: [:new, :create]
   resources :groups, only: [:new, :create]
 
