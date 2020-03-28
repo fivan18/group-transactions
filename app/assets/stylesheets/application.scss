@@ -1,1 +1,41 @@
  @import "bootstrap";
+
+ /***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: https://j.mp/metronictheme
+Licensed under MIT
+***/
+
+body {
+  background: #F1F3FA;
+}
+
+.well {
+  border: solid 1px black;
+}
+
+
+.nav-toggle-icon {
+  margin-left: 20px;
+}
+
+.nav-toggle > span,
+.nav-toggle::after,
+.nav-toggle::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 4px;
+  background-color: #fb9a94;
+  margin: 4px auto;
+}
+
+
+
+
+
+
+
+
+
+

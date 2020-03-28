@@ -10,6 +10,54 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <div class="fluid-container">
+    
+    <%= render 'layouts/navbar' %>
+    <div class="row my-3 no-gutters">
+		<div class="col-12 col-lg-3 well px-3 d-none d-lg-block">
+			<div class="">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="https://gravatar.com/avatar/31b64e4876d603ce78e04102c67d6144?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						Jason Davis
+					</div>
+					<div class="profile-usertitle-job">
+						Developer
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR MENU -->
+				<div class="">
+					<ul>
+						<li>
+							<a href="#">Overview </a>
+						</li>
+						<li>
+							<a href="#">Account Settings </a>
+						</li>
+						<li>
+							<a href="#">Tasks </a>
+						</li>
+						<li>
+							<a href="#">Help </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-12 col-lg-9 well px-3">
+      <div class="">
+        <%= yield %>
+      </div>
+		</div>
+	</div>
+</div>
   </body>
 </html>
