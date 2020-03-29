@@ -16,6 +16,7 @@ class TransactionsController < ApplicationController
 
   def group_transactions
     @transactions = current_user.group_transactions
+    @amount = amount_transactions(@transactions)
   end
 
   def transaction_params
