@@ -9,7 +9,9 @@ class User < ApplicationRecord
   has_many :groups
 
   def group_transactions
-    transactions.select { |transaction| !transaction.groups.empty? }
+    transactions.select { |transaction| !transaction.groups.empty? }.sort do |a, b| 
+      b.created_at <=> a.created_at
+    end
   end
 
   def email_required?
