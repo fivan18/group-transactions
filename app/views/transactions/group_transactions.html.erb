@@ -1,7 +1,17 @@
-<ul>
-  <% @transactions.each do |transaction| %>
-    <% transaction.groups.each do |group| %>
-      <li>Transaction: <%= transaction.name %> Group: <%= group.name %></li>
-    <% end %>
+<% @transactions.each do |transaction| %>
+  <% transaction.groups.each do |group| %>
+    <div class="card">
+      <div class="card-header d-flex justify-content-between">
+        <div>
+          <%= transaction.name %>
+        </div>
+        <div>
+          <%= transaction.amount %> 
+        </div>
+      </div>
+      <div class="card-body">
+      <h5 class="card-title"><%= group.name %></h5>
+      </div>
+    </div>
   <% end %>
-</ul>
+<% end %>
