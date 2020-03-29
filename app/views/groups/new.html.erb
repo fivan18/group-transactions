@@ -1,7 +1,9 @@
 <%= form_with model: Group.new do |f| %>
   <%= f.label :name %>
-  
   <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
 
   <%= f.submit 'Submit', class: "btn btn-primary" %>
 <% end %>

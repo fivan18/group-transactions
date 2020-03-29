@@ -1,30 +1,39 @@
 <nav class="card py-2 px-3 mb-4">
-  <div class="d-flex justify-content-between align-items-center w-100">
-    <%= link_to 'New', new_transaction_path %>
-    <h2>
+  <h2 class="d-flex justify-content-between align-items-center w-100">
+    <div>
+      TOTAL
+    </div>
+    <div>
       $<%= @amount %>
-    </h2>
-  </div>
+    </div>
+  </h2>
 </nav>
 
 
 
 <% @transactions.each do |transaction| %>
   <% transaction.groups.each do |group| %>
-    <div class="card mb-2">
-      <div class="card-header d-flex justify-content-between">
-        <div>
-          <%= transaction.name %>
-        </div>
-        <div>
-          <%= transaction.amount %> 
-        </div>
+    <div class="card mb-2 p-3 d-flex flex-row">
+      <div class="mr-2">
+        <%= image_tag group.avatar.variant(resize: '100x100!'), class: 'rounded' %>
       </div>
-      <div class="card-body">
-      <h5 class="card-title"><%= group.name %></h5>
+      <div class="d-flex justify-content-between w-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= transaction.name %></h5>
+          <p class="card-text"><small class="text-muted">
+            <%= transaction.created_at.to_s(:rfc822) %>
+          </small></p>
+        </div>
+        <div> 
+          $<%= transaction.amount %>
+        </div>
       </div>
     </div>
   <% end %>
 <% end %>
+
+
+  <%= link_to 'New', new_transaction_path, class: "btn btn-success btn-lg btn-block" %>
+
 
 
