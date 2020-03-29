@@ -14,22 +14,20 @@ body {
   border: solid 1px black;
 }
 
+.profile {
 
-.nav-toggle-icon {
-  margin-left: 20px;
+}
+.profile ul {
+  height: 700px;
 }
 
-.nav-toggle > span,
-.nav-toggle::after,
-.nav-toggle::before {
-  content: "";
-  display: block;
-  width: 30px;
-  height: 4px;
-  background-color: #fb9a94;
-  margin: 4px auto;
+.wellcome {
+  height: 700px;
 }
 
+.bg-profile {
+  background-color: #3778c2;
+}
 
 
 

@@ -1,16 +1,22 @@
-<div class="card">
-  <div class="card-body text-center">
-    <div class="card-title">
-      ivancito
+<div class="card text-white profile bg-profile">
+  <% if user_signed_in? %>
+    <div class="card-body text-center">
+      <h2 class="card-title">
+        <%= current_user.username %>
+      </h2>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-primary' %>
     </div>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      
-    </li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-    </li>
-  </ul>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item bg-profile">
+        <%= link_to 'All transactions', group_transactions_path, class: 'text-white' %>
+      </li>
+    </ul>
+  <% else %>
+    <div class="card-body text-center">
+      <h2 class="card-title wellcome">
+        Wellcome!!
+      </h2>
+    </div>
+  <% end %>
 </div>
