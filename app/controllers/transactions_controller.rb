@@ -19,6 +19,11 @@ class TransactionsController < ApplicationController
     @amount = amount_transactions(@transactions)
   end
 
+  def external_transactions
+    @transactions = current_user.external_transactions
+    @amount = amount_transactions(@transactions)
+  end
+
   def transaction_params
     params.require(:transaction).permit(:name, :amount)
   end

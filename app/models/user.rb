@@ -14,6 +14,12 @@ class User < ApplicationRecord
     end
   end
 
+  def external_transactions
+    transactions.select { |transaction| transaction.groups.empty? }.sort do |a, b| 
+      b.created_at <=> a.created_at
+    end
+  end
+
   def email_required?
     false
   end

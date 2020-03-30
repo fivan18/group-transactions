@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :groups, only: [:new, :create]
 
   get '/group_transactions', to: 'transactions#group_transactions'
+  get '/external_transactions', to: 'transactions#external_transactions'
 end
