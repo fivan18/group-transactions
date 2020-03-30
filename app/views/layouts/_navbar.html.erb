@@ -1,15 +1,17 @@
-<nav class="navbar navbar-light bg-light justify-content-between d-lg-none">
+<nav class="navbar navbar-light justify-content-between d-lg-none bg-profile">
   <div class="dropdown show">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Options
     </a>
-
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
+      <% if user_signed_in? %>
+        <%= link_to 'All transactions', group_transactions_path, class: 'dropdown-item' %>
+        <%= link_to 'External transactions', external_transactions_path, class: 'dropdown-item' %>
+        <%= link_to 'All groups',  groups_path, class: 'dropdown-item' %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+      <% else %>
+        <%= link_to 'Sign in', new_user_session_path, class: 'dropdown-item' %>
+      <% end %>
     </div>
   </div>
-
-  <a class="navbar-brand">Navbar</a>
 </nav>

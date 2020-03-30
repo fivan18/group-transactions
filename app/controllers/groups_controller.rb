@@ -1,4 +1,6 @@
 class GroupsController < ApplicationController
+  before_action :store_user_location!, only: [:show, :index], 
+                                       if: :storable_location?
   before_action :authenticate_user!
   
   def new; end
@@ -16,7 +18,7 @@ class GroupsController < ApplicationController
   def create
     group = current_user.groups.create(group_params)
     if group
-      redirect_to root_url
+      redirect_to stored_location_for(:user) || root_url
     else
       render 'new'
     end
@@ -27,6 +29,17 @@ class GroupsController < ApplicationController
   end
 
   private
+
+  private
+
+    def storable_location?
+      request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    end
+
+    def store_user_location!
+      # :user is the scope we are authenticating
+      store_location_for(:user, request.fullpath)
+    end
 
     def group_params
       params.require(:group).permit(:name, :avatar)
