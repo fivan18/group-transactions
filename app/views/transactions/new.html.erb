@@ -4,7 +4,8 @@
 
       <h2>Create a transaction</h2>
 
-      <%= form_with model: Transaction.new do |f| %>
+      <%= form_for(@transaction, url: transactions_path) do |f| %>
+        <%= render "devise/shared/error_messages", resource: @transaction %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>

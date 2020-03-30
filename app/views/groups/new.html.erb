@@ -4,7 +4,8 @@
 
       <h2>Create a group</h2>
 
-      <%= form_with model: Group.new do |f| %>
+      <%= form_for(@group, url: groups_path) do |f| %>
+        <%= render '/devise/shared/error_messages', resource: @group %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>

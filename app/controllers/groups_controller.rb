@@ -3,7 +3,9 @@ class GroupsController < ApplicationController
                                        if: :storable_location?
   before_action :authenticate_user!
   
-  def new; end
+  def new
+    @group = Group.new
+  end
 
   def show
     id = params[:id]
@@ -16,8 +18,8 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = current_user.groups.create(group_params)
-    if group.id
+    @group = current_user.groups.create(group_params)
+    if @group.id
       redirect_to stored_location_for(:user) || root_url
     else
       render 'new'

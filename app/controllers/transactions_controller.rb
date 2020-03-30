@@ -3,13 +3,15 @@ class TransactionsController < ApplicationController
                                        if: :storable_location?
   before_action :authenticate_user!
   
-  def new; end
+  def new
+    @transaction = Transaction.new
+  end
 
   def create
-    transaction = current_user.transactions.create(transaction_params)
-    if transaction
+    @transaction = current_user.transactions.create(transaction_params)
+    if @transaction.id
       group_id = group_params[:group_id]
-      transaction.groups << Group.find(group_id) unless group_id.empty?
+      @transaction.groups << Group.find(group_id) unless group_id.empty?
       redirect_to stored_location_for(:user) || root_url
     else
       render 'new'
