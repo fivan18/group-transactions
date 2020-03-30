@@ -1,9 +1,23 @@
-<%= form_with model: Group.new do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
+<div class="row justify-content-center h-100">
+  <div class="col-12 col-lg-7 mt-lg-5">
+    <div class="card p-3">
 
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
+      <h2>Create a group</h2>
 
-  <%= f.submit 'Submit', class: "btn btn-primary" %>
-<% end %>
+      <%= form_with model: Group.new do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label 'Group image' %>
+          <%= f.file_field :avatar, class: 'form-control-file' %>
+        </div>
+
+        <%= f.submit 'Submit', class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
