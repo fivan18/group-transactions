@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
 
   def create
     group = current_user.groups.create(group_params)
-    if group
+    if group.id
       redirect_to stored_location_for(:user) || root_url
     else
       render 'new'
