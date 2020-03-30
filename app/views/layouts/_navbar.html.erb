@@ -1,7 +1,11 @@
 <nav class="navbar navbar-light justify-content-between d-lg-none bg-profile">
   <div class="dropdown show">
     <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Options
+      <% if user_signed_in? %>
+        <%= current_user.username %>
+      <% else %>
+        Options
+      <% end %>
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <% if user_signed_in? %>

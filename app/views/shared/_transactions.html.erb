@@ -15,7 +15,11 @@
   <div class="card mb-2 p-3 d-flex flex-row">
     <div class="mr-2 d-flex align-items-center">
       <% if transaction.groups.empty? %>
-        <h3><%= transaction.user.username %></h3>
+        <h3>
+          <span class="badge badge-dark">
+            <%= transaction.user.username %>
+          </span>
+        </h3>
       <% else %>
         <%= image_tag transaction.groups.first.avatar.variant(resize: '100x100!'), class: 'rounded' %>
       <% end %>
@@ -23,6 +27,11 @@
     <div class="d-flex justify-content-between w-100">
       <div class="card-body">
         <h5 class="card-title"><%= transaction.name %></h5>
+        <% if !transaction.groups.empty? && current_page?(group_path(transaction.groups.first)) %>
+          <span class="badge badge-dark">
+            <%= transaction.user.username %>
+          </span>
+        <% end %>
         <p class="card-text"><small class="text-muted">
           <%= transaction.created_at.to_s(:rfc822) %>
         </small></p>
