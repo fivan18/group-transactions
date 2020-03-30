@@ -32,6 +32,8 @@ gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem "image_processing"
+gem 'active_storage_validations'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

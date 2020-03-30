@@ -6,7 +6,8 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rspec'
 require_relative './support/factory_bot.rb'
-
+require 'active_storage_validations/matchers'
+require_relative './support/active_storage_validations.rb'
 
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
