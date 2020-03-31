@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   
   def new
     @transaction = Transaction.new
+    @selected_group = params[:selected_group]
   end
 
   def create
@@ -16,9 +17,15 @@ class TransactionsController < ApplicationController
       if group_id.empty?
         redirect_to external_transactions_path
       else
-        redirect_to group_transactions_path
+        location = stored_location_for(:user)
+        if location == group_path(group_id)
+          redirect_to location || root_url
+        else
+          redirect_to group_transactions_path
+        end
       end 
     else
+      @selected_group = group_params[:group_id]
       render 'new'
     end
   end

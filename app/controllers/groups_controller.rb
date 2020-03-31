@@ -8,9 +8,9 @@ class GroupsController < ApplicationController
   end
 
   def show
-    id = params[:id]
-    if Group.exists?(id)
-      @transactions = Group.find(id).sorted_transactions
+    @id = params[:id]
+    if Group.exists?(@id)
+      @transactions = Group.find(@id).sorted_transactions
       @amount = amount_transactions(@transactions)
     else
       redirect_to root_path
