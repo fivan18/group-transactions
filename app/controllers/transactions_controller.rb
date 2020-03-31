@@ -10,9 +10,14 @@ class TransactionsController < ApplicationController
   def create
     @transaction = current_user.transactions.create(transaction_params)
     if @transaction.id
+      flash[:success] = "Transaction created!"
       group_id = group_params[:group_id]
       @transaction.groups << Group.find(group_id) unless group_id.empty?
-      redirect_to stored_location_for(:user) || root_url
+      if group_id.empty?
+        redirect_to external_transactions_path
+      else
+        redirect_to group_transactions_path
+      end 
     else
       render 'new'
     end

@@ -18,6 +18,15 @@
       <%= render 'layouts/profile' %>
     </div>
     <div class="col-12 col-lg-9 px-3">
+      <% flash.each do |message_type, message| %>
+        <% if message_type == 'alert' %>
+          <%= content_tag(:div, message, class: "alert alert-warning") %>
+        <% elsif message_type == 'notice'  %>
+          <%= content_tag(:div, message, class: "alert alert-success") %>
+        <% else %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+      <% end %>
       <%= yield %>
 		</div>
 	</div>

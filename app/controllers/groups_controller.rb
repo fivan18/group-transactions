@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
   def create
     @group = current_user.groups.create(group_params)
     if @group.id
+      flash[:success] = "Group created!"
       redirect_to stored_location_for(:user) || root_url
     else
       render 'new'
