@@ -8,6 +8,7 @@ require 'capybara/rspec'
 require_relative './support/factory_bot.rb'
 require 'active_storage_validations/matchers'
 require_relative './support/active_storage_validations.rb'
+require 'devise'
 
 # Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
@@ -53,4 +54,11 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+RSpec.configure do |config|
+  # For Devise > 4.1.1
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  # Use the following instead if you are on Devise <= 4.1.1
+  # config.include Devise::TestHelpers, :type => :controller
 end

@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :transaction do
     user
-    name { Faker::Lorem.sentence[7..29] }
+    name { 'Transaction by Factorybot' }
     amount { Faker::Number.number(2) }
 
     factory :transaction_with_groups do
@@ -17,7 +17,7 @@ FactoryBot.define do
 
   factory :group do
     user
-    name { Faker::Company.name[7..29] }
+    name { 'Group by Factorybot' }
     avatar { Rack::Test::UploadedFile.new(Rails.root.join("spec/factories/mac.jpeg"), 'image/jpeg') }
   end
 
