@@ -37,7 +37,7 @@ RSpec.describe 'Transaction creation', type: :feature, js: true do
       sleep(1)
       fill_in 'Amount', with: '120'
       sleep(1)
-      find(:select).find(:option, 'this is a group').select_option
+      find(:select).find(:option, transaction.groups.first.name).select_option
       sleep(1)
       find('input[type="submit"]').click
       sleep(2)

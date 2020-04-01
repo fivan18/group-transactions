@@ -10,14 +10,14 @@ FactoryBot.define do
       end
 
       after(:create) do |transaction, evaluator|
-        create_list(:group, evaluator.groups_count)
+        create_list(:group, evaluator.groups_count, transactions: [transaction])
       end
     end
   end
 
   factory :group do
     user
-    name { 'this is a group' }#{ Faker::Company.name[7..29] }
+    name { Faker::Company.name[7..29] }
     avatar { Rack::Test::UploadedFile.new(Rails.root.join("spec/factories/mac.jpeg"), 'image/jpeg') }
   end
 
