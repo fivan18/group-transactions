@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::Base
-  include TransactionsHelper  
+  include TransactionsHelper
 end

@@ -1,8 +1,8 @@
 class TransactionsController < ApplicationController
-  before_action :store_user_location!, only: [:group_transactions, :external_transactions], 
+  before_action :store_user_location!, only: %i[group_transactions external_transactions],
                                        if: :storable_location?
   before_action :authenticate_user!
-  
+
   def new
     @transaction = Transaction.new
     @selected_group = params[:selected_group]
@@ -11,19 +11,14 @@ class TransactionsController < ApplicationController
   def create
     @transaction = current_user.transactions.create(transaction_params)
     if @transaction.id
-      flash[:success] = "Transaction created!"
+      flash[:success] = 'Transaction created!'
       group_id = group_params[:group_id]
       @transaction.groups << Group.find(group_id) unless group_id.empty?
       if group_id.empty?
         redirect_to external_transactions_path
       else
-        location = stored_location_for(:user)
-        if location == group_path(group_id)
-          redirect_to location || root_url
-        else
-          redirect_to group_transactions_path
-        end
-      end 
+        redirect_to_stored_location(group_transactions_path, group_id)
+      end
     else
       @selected_group = group_params[:group_id]
       render 'new'
@@ -42,20 +37,20 @@ class TransactionsController < ApplicationController
 
   private
 
-    def storable_location?
-      request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
-    end
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
 
-    def store_user_location!
-      # :user is the scope we are authenticating
-      store_location_for(:user, request.fullpath)
-    end
+  def store_user_location!
+    # :user is the scope we are authenticating
+    store_location_for(:user, request.fullpath)
+  end
 
-    def group_params
-      params.require(:group).permit(:group_id)
-    end
+  def group_params
+    params.require(:group).permit(:group_id)
+  end
 
-    def transaction_params
-      params.require(:transaction).permit(:name, :amount)
-    end
+  def transaction_params
+    params.require(:transaction).permit(:name, :amount)
+  end
 end

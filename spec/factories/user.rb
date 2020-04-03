@@ -1,26 +1,4 @@
 FactoryBot.define do
-  factory :transaction do
-    user
-    name { 'Transaction by Factorybot' }
-    amount { Faker::Number.number(2) }
-
-    factory :transaction_with_groups do
-      transient do
-        groups_count { 1 }
-      end
-
-      after(:create) do |transaction, evaluator|
-        create_list(:group, evaluator.groups_count, transactions: [transaction])
-      end
-    end
-  end
-
-  factory :group do
-    user
-    name { 'Group by Factorybot' }
-    avatar { Rack::Test::UploadedFile.new(Rails.root.join("spec/factories/mac.jpeg"), 'image/jpeg') }
-  end
-
   factory :user do
     username { Faker::Name.name[0..9].split(' ').join('') }
     password { 'password' }

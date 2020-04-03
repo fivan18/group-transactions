@@ -5,7 +5,7 @@ class Group < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true, length: { in: 6..30 }
-  validates :avatar, attached: true, content_type: [:png, :jpg, :jpeg]
+  validates :avatar, attached: true, content_type: %i[png jpg jpeg]
 
   def sorted_transactions
     transactions.sort { |a, b| b.created_at <=> a.created_at }
