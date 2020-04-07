@@ -9,7 +9,7 @@ RSpec.describe 'Transaction creation', type: :feature, js: true do
       fill_in 'Password', with: 'password'
       find('input[type="submit"]').click
 
-      find('a[href="/transactions/new?selected_group="]').click
+      find('a[href="/transactions/new?group%5Bselected_group%5D="]').click
       fill_in 'Name', with: 'Another transaction'
       fill_in 'Amount', with: '120'
       sleep(1)
@@ -25,7 +25,7 @@ RSpec.describe 'Transaction creation', type: :feature, js: true do
       fill_in 'Password', with: 'password'
       find('input[type="submit"]').click
 
-      find('a[href="/transactions/new?selected_group="]').click
+      find('a[href="/transactions/new?group%5Bselected_group%5D="]').click
       fill_in 'Name', with: 'Another transaction'
       fill_in 'Amount', with: '120'
       find(:select).find(:option, transaction.groups.first.name).select_option
@@ -44,7 +44,7 @@ RSpec.describe 'Transaction creation', type: :feature, js: true do
       fill_in 'Password', with: 'password'
       find('input[type="submit"]').click
 
-      find("a[href=\"/transactions/new?selected_group=#{transaction.groups.first.id}\"]").click
+      find("a[href=\"/transactions/new?group%5Bselected_group%5D=#{transaction.groups.first.id}\"]").click
       fill_in 'Name', with: 'Another transaction'
       fill_in 'Amount', with: '120'
       sleep(1)
