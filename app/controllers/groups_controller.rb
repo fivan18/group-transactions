@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = Group.includes([:avatar_attachment]).all
   end
 
   private

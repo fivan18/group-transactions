@@ -7,13 +7,13 @@ class User < ApplicationRecord
   has_many :groups
 
   def group_transactions
-    transactions.reject { |transaction| transaction.groups.empty? }.sort do |a, b|
+    transactions.includes([:groups]).reject { |transaction| transaction.groups.empty? }.sort do |a, b|
       b.created_at <=> a.created_at
     end
   end
 
   def external_transactions
-    transactions.select { |transaction| transaction.groups.empty? }.sort do |a, b|
+    transactions.includes([:groups]).select { |transaction| transaction.groups.empty? }.sort do |a, b|
       b.created_at <=> a.created_at
     end
   end

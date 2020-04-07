@@ -6,6 +6,7 @@ ruby '2.6.5'
 gem 'active_storage_validations'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap', '~> 4.4.1'
+gem 'bullet', group: 'development'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'faker', '1.7.3'
