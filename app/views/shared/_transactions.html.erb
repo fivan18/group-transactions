@@ -43,7 +43,7 @@
   </div>
 <% end %>
 
-<%= link_to 'New', new_transaction_path(selected_group: @id || ''), class: "btn btn-success btn-lg btn-block" %>
+<%= link_to 'New', new_transaction_path('group[selected_group]' => @id || ''), class: "btn btn-success btn-lg btn-block" %>
 
 
 

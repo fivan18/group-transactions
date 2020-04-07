@@ -5,7 +5,7 @@ class TransactionsController < ApplicationController
 
   def new
     @transaction = Transaction.new
-    @selected_group = params[:selected_group]
+    @selected_group = group_params[:selected_group]
   end
 
   def create
@@ -37,6 +37,14 @@ class TransactionsController < ApplicationController
 
   private
 
+  def group_params
+    params.require(:group).permit(:group_id, :selected_group)
+  end
+
+  def transaction_params
+    params.require(:transaction).permit(:name, :amount)
+  end
+
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end
@@ -44,13 +52,5 @@ class TransactionsController < ApplicationController
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
-  end
-
-  def group_params
-    params.require(:group).permit(:group_id)
-  end
-
-  def transaction_params
-    params.require(:transaction).permit(:name, :amount)
   end
 end
