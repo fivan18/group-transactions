@@ -1,4 +1,5 @@
 AllCops:
+  EnableByDefault: true
   Exclude:
     - "db/**/*"
     - "bin/*" 
@@ -11,25 +12,20 @@ AllCops:
   DisplayCopNames: true
 
 Layout/LineLength:
-  Enabled: true
   Max: 120
 Metrics/MethodLength:
-  Enabled: true
   Include:
     - "app/controllers/*"
     - "app/models/*"
   Max: 20
 Metrics/AbcSize:
-  Enabled: true
   Include:
     - "app/controllers/*"
     - "app/models/*"
   Max: 50
 Metrics/ClassLength:
-  Enabled: true
   Max: 150
 Metrics/BlockLength:
-  Enabled: true
   ExcludedMethods: ['describe']
   Max: 30
 
@@ -44,14 +40,11 @@ Style/AndOr:
 Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
-  Enabled: true
   EnforcedStyle: never
 
 Layout/HashAlignment:
-  Enabled: true
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
-  Enabled: true
   AllowForAlignment: false
 Layout/MultilineMethodCallIndentation:
   Enabled: true
