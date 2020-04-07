@@ -27,12 +27,12 @@ class TransactionsController < ApplicationController
 
   def group_transactions
     @transactions = current_user.group_transactions
-    @amount = amount_transactions(@transactions)
+    @amount = @transactions.sum('amount')
   end
 
   def external_transactions
     @transactions = current_user.external_transactions
-    @amount = amount_transactions(@transactions)
+    @amount = @transactions.sum('amount')
   end
 
   private

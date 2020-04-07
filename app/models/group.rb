@@ -8,6 +8,7 @@ class Group < ApplicationRecord
   validates :avatar, attached: true, content_type: %i[png jpg jpeg]
 
   def sorted_transactions
-    transactions.includes([:groups, :user]).sort { |a, b| b.created_at <=> a.created_at }
+    transactions.order(created_at: :desc)
+      .includes(%i[groups user])
   end
 end

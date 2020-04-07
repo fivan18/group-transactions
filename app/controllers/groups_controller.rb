@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @id = params[:id]
     if Group.exists?(@id)
       @transactions = Group.find(@id).sorted_transactions
-      @amount = amount_transactions(@transactions)
+      @amount = @transactions.sum('amount')
     else
       redirect_to root_path
     end

@@ -7,15 +7,16 @@ class User < ApplicationRecord
   has_many :groups
 
   def group_transactions
-    transactions.includes([:groups]).reject { |transaction| transaction.groups.empty? }.sort do |a, b|
-      b.created_at <=> a.created_at
-    end
+    transactions.joins(:amount_relationships)
+      .order(created_at: :desc)
+      .includes([:groups])
   end
 
   def external_transactions
-    transactions.includes([:groups]).select { |transaction| transaction.groups.empty? }.sort do |a, b|
-      b.created_at <=> a.created_at
-    end
+    transactions.joins('LEFT JOIN amount_relationships ON amount_relationships.transaction_id = transactions.id')
+      .where('amount_relationships.transaction_id IS NULL')
+      .order(created_at: :desc)
+      .includes([:groups])
   end
 
   def email_required?
