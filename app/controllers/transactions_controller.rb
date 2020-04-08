@@ -11,13 +11,12 @@ class TransactionsController < ApplicationController
   def create
     @transaction = current_user.transactions.create(transaction_params)
     if @transaction.id
-      flash[:success] = 'Transaction created!'
       group_id = group_params[:group_id]
-      @transaction.groups << Group.find(group_id) unless group_id.empty?
       if group_id.empty?
+        flash[:success] = 'Transaction created!'
         redirect_to external_transactions_path
       else
-        redirect_to_stored_location(group_transactions_path, group_id)
+        verify_amount(@transaction, group_id)
       end
     else
       @selected_group = group_params[:group_id]

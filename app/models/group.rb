@@ -6,6 +6,7 @@ class Group < ApplicationRecord
 
   validates :name, presence: true, length: { in: 6..30 }
   validates :avatar, attached: true, content_type: %i[png jpg jpeg]
+  validates :minimum_amount, presence: true
 
   def sorted_transactions
     transactions.order(created_at: :desc)

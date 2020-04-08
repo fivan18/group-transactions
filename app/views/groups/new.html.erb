@@ -12,6 +12,15 @@
         </div>
 
         <div class="form-group">
+          Set minimum amount: 
+          <%= check_box_tag 'minimum_amount' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.hidden_field :minimum_amount, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
           <%= f.label 'Group image' %>
           <%= f.file_field :avatar, class: 'form-control-file' %>
         </div>
@@ -22,3 +31,13 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("minimum_amount").addEventListener("click", (event) => {
+    const minimumAmount = document.getElementById("group_minimum_amount");
+    minimumAmount.value = 0;
+    minimumAmount.type = event.target.checked ? "number" : "hidden";
+  });
+
+  console.log('done');
+</script>
