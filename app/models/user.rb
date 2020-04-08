@@ -16,7 +16,6 @@ class User < ApplicationRecord
     transactions.joins('LEFT JOIN amount_relationships ON amount_relationships.transaction_id = transactions.id')
       .where('amount_relationships.transaction_id IS NULL')
       .order(created_at: :desc)
-      .includes([:groups])
   end
 
   def email_required?
