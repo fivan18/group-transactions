@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root 'transactions#group_transactions'
+  resources :users, only: [:show]
+  resources :transactions, only: [:new, :create]
+  resources :groups, only: [:new, :create, :index, :show]
+
+  get '/group_transactions', to: 'transactions#group_transactions'
+  get '/external_transactions', to: 'transactions#external_transactions'
 end
