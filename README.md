@@ -29,7 +29,13 @@ You can create an account and start grouping payments with your friends. You can
 
 ### prerequisites
 
-Get a local copy of the project cloning the[repository](https://github.com/fivan18/group-transactions):
+1. Install ImageMagick and/or libvips:
+
+    $ brew install imagemagick vips
+
+**Note:** if you haven't installed `brew`, check [this](https://docs.brew.sh/Homebrew-on-Linux#install) out.
+
+2. Get a local copy of the project cloning the[repository](https://github.com/fivan18/group-transactions):
 
     $ git colone https://github.com/fivan18/group-transactions.git
 
