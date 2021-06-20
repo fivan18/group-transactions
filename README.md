@@ -23,7 +23,7 @@ You can create an account and start grouping payments with your friends. You can
 - Postgres: >=9.6
 
 ## Live Version
-[Group transactions](https://group-transactions.herokuapp.com/)
+[https://still-ridge-53873.herokuapp.com/](https://still-ridge-53873.herokuapp.com/)
 
 ## Installation
 
